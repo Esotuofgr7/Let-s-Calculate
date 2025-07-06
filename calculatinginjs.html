@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esotu Calculator</title>
+  <link rel="stylesheet" href="style9b1.css">
+</head>
+<img src="downloadedlion.jpg" alt="Dangerous Eagle" id="eagle-img">
+<body>
+  <center><h1><mark>Calculator</mark></h1></center>
+  <div id="result">
+    <div id="history">
+<p id="history-value"></p>
+    </div>
+    <div id="output">
+<p id="output-value"></p>
+    </div>
+
+</div>
+  <div id="container">
+    <div id="calculator">
+      <input type="text" id="display" readonly>
+
+      <div class="buttons">
+        <button onclick="appendValue('7')">7</button>
+        <button onclick="appendValue('8')">8</button>
+        <button onclick="appendValue('9')">9</button>
+        <button onclick="appendValue('/')">÷</button>
+
+        <button onclick="appendValue('4')">4</button>
+        <button onclick="appendValue('5')">5</button>
+        <button onclick="appendValue('6')">6</button>
+        <button onclick="appendValue('*')">×</button>
+
+        <button onclick="appendValue('1')">1</button>
+        <button onclick="appendValue('2')">2</button>
+        <button onclick="appendValue('3')">3</button>
+        <button onclick="appendValue('-')">−</button>
+
+        <button onclick="appendValue('0')">0</button>
+        <button onclick="appendValue('.')">.</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="appendValue('+')">+</button>
+
+        <button onclick="clearDisplay()" class="clear">C</button>
+      </div>
+
+      <h3 id="result">Result: </h3>
+    </div>
+  </div>
+
+  <script>
+    function appendValue(value) {
+      document.getElementById('display').value += value;
+    }
+
+    function calculate() {
+      const input = document.getElementById('display').value;
+      let result;
+      try {
+        result = eval(input);
+        if (isNaN(result) || result === Infinity || result === -Infinity) {
+          throw new Error();
+        }
+      } catch {
+        result = 'Invalid input';
+      }
+      document.getElementById('result').innerText = 'Result: ' + result;
+    }
+
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+      document.getElementById('result').innerText = 'Result: ';
+    }
+  </script>
+</body>
+</html>
